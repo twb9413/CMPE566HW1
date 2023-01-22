@@ -63,13 +63,43 @@
 % Question 5
 % Suppose we want to create a 4x1 matrix populated with all 5's. Which
 % commands achieve this?
-    A = ones(4,1)*5
-    B = ones(4) * 5
-    C = 5 * ones(1,4)'
-    D = ones(4, 1) .* 5
-    E = eye(4) * 5
+    A = ones(4,1)*5;
+    B = ones(4) * 5;
+    C = 5 * ones(1,4)';
+    D = ones(4, 1) .* 5;
+    E = eye(4) * 5;
 % A, C, and D  all create the desired 4x1 matrix with all 5's
 %--------------------------------------------------------------------------
+% Question 6
+% Given the Matrix A, which of the expressions would give the matrix B
+    A = [1 2 3 4 5; 2 3 4 5 6; 3 4 5 6 7; 4 5 6 7 8; 5 6 7 8 9];
+    B = A(2:4, 1:2:5);
+    B = A(1:2:5, 2:4);
+    B = A(2:4, [1 3 5]);
+    B = [A(1, 2:4) A(3,2:4) A(5,2:4)];
+    B = [A(2:4, 1) A(2:4,3) A(2:4,5)];
+    B = A(1:2:5, 2:4);
+    
+% The desired matrix is achieved with expressions A, C, and E
+%--------------------------------------------------------------------------
+% Question 7
+    x = 0:.05:(3/2)*pi
+    y1 = sin(x);
+    plot(x, y1, 'r', 'LineWidth', 3);
+    hold on;
+    y2 = sinc(x);
+    plot(x, y2, 'g', 'LineWidth', 3);
+    hold on;
+    y3 = sin(x.^2);
+    plot(x, y3, 'b', 'LineWidth', 3);
+    xlabel("time", 'FontSize', 10);
+    ylabel("response", 'FontSize', 10);
+    title("CMPE677, HW1, Problem 7, $\lambda$=0", 'interpreter', 'latex', 'FontSize', 12);
+    legend('sin(x)', 'sinc(x)', 'sin(x^2)');
+    print('-dpng', 'myFirstPlot.png')
+    
+    
+
     
 
 
