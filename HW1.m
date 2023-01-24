@@ -83,7 +83,7 @@
 % The desired matrix is achieved with expressions A, C, and E
 %--------------------------------------------------------------------------
 % Question 7
-    x = 0:.05:(3/2)*pi
+    x = 0:.05:(3/2)*pi;
     y1 = sin(x);
     plot(x, y1, 'r', 'LineWidth', 3);
     hold on;
@@ -97,12 +97,30 @@
     title("CMPE677, HW1, Problem 7, $\lambda$=0", 'interpreter', 'latex', 'FontSize', 12);
     legend('sin(x)', 'sinc(x)', 'sin(x^2)');
     print('-dpng', 'myFirstPlot.png')
-    
-    
-
-    
-
-
+%--------------------------------------------------------------------------
+% Question 8 
+    A = [1 0 -4 8 3; 4 -2 3 3 1];
+    B = zeros(1,5);
+    for index = 1:size(A,2)
+        if A(1, index) > A(2, index)
+            B(index) = A(1, index);
+        else
+            B(index) = A(2, index);
+        end
+    end
+%--------------------------------------------------------------------------
+% Question 9
+% Which of the following make 2x3 matrices that only have 0s;
+    A = zeros(2);
+    B = zeros(3, 2);
+    C = [eye(2) zeros(2,1)] * 0;
+    D = eye(2,3)*0;
+    E = [0 0; 0 0; 0 0];
+    F = [0 0 0; 0 0 0];
+% C, D, and F create 2x3 matrices
+%--------------------------------------------------------------------------
+% Question 10
+  
 
 
 
