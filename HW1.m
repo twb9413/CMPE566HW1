@@ -160,3 +160,10 @@ grid on
 axis square
 title('CMPE 677, Hwk 1, Problem 11','fontsize',12);
 print -dpng cmpe677_hwk1_11.png
+hold on
+y = -4:2:4;
+for i = 1:length(y)
+    x = x1(round(length(x1)/2) + (y(i) - mu(2))/sigma(2,1)*sqrt(sigma(1,1)));
+    plot(x, y(i)*ones(size(x)), '-', 'DisplayName', sprintf('y = %d',y(i)));
+end
+legend('show');
