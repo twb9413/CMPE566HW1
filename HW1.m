@@ -133,38 +133,16 @@
     title('CMPE 677, Hwk 1, Problem 10','fontsize',12);
     print -dpng cmpe677_hwk1_10.png
     
-    G = zeros(size(x2));
-    for i = 1:length(x2)
-        G(i) = integral(@(x)F(i,x), x1(1), x1(end));
-    end
-    plot(x2, G);
-
-    mu=[0 3];
-    sigma=[5 -2 ;-2 2];
-    x1 = -10:0.1:10; x2 = x1;
-    [X1,X2] = meshgrid(x1,x2);
-    F = mvnpdf([X1(:) X2(:)], mu,sigma);
-    F = reshape(F,length(x2),length(x1));
-
-    % Marginalize F over x
-    G = zeros(size(x2));
-    for i = 1:length(x2)
-        G(i) = integral(@(x)F(i,x),x1(1),x1(end));
-    end
-
-    hold on;
-    contour(x1,x2,F);
-    grid on;
-    axis square;
-
-    % Plot marginalized function
-    plot(x2,G);
-    xlabel('x2');
-    ylabel('G(x2)');
-    title('Marginalized function G(x2)');
-
-
-
-
-
-
+    % marginalize F over x
+    Gx = sum(F,1);
+    % marginalize F over y
+    Gy = sum(F, 2);
+    plot(x1, Gx, 'r', 'LineWidth', 3);
+    hold on
+    plot(x1, Gy, 'g', 'LineWidth', 3);
+    title("CMPE677, HW1, Problem 10", 'FontSize', 12);
+    legend('Gx', 'Gy');
+    print('-dpng', 'MarginalPlots.png');
+    grid on
+    text(0, 1.9, 'mean G(x)');
+    text(3, 2.9, 'mean G(y)');
