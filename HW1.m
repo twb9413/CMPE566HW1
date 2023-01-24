@@ -132,6 +132,12 @@
     axis square
     title('CMPE 677, Hwk 1, Problem 10','fontsize',12);
     print -dpng cmpe677_hwk1_10.png
+    
+    G = zeros(size(x2));
+    for i = 1:length(x2)
+        G(i) = integral(@(x)F(i,x), x1(1), x1(end));
+    end
+    plot(x2, G);
 
 
 
