@@ -120,7 +120,18 @@
 % C, D, and F create 2x3 matrices
 %--------------------------------------------------------------------------
 % Question 10
-  
+    hold off
+    mu=[0 3];
+    sigma=[5 -2 ;-2 2];
+    x1 = -10:0.1:10; x2 = x1;
+    [X1,X2] = meshgrid(x1,x2);
+    F = mvnpdf([X1(:) X2(:)], mu,sigma);
+    F = reshape(F,length(x2),length(x1));
+    contour(x1,x2,F);
+    grid on
+    axis square
+    title('CMPE 677, Hwk 1, Problem 10','fontsize',12);
+    print -dpng cmpe677_hwk1_10.png
 
 
 
