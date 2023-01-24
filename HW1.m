@@ -145,8 +145,23 @@
     print('-dpng', 'MarginalPlots.png');
     grid on
     text(0, 1.9, 'mean G(x)');
-    text(3, 2.9, 'mean G(y)');
-    
+    text(3, 2.9, 'mean G(y)')
 %--------------------------------------------------------------------------
 % Question 11
 
+    hold off
+    mu=[0 0];
+    sigma=[5 -2 ;-2 2];
+    x1 = -10:0.1:10; x2 = x1;
+    [X1,X2] = meshgrid(x1,x2);
+    F = mvnpdf([X1(:) X2(:)], mu,sigma);
+    F = reshape(F,length(x2),length(x1));
+    contour(x1,x2,F);
+    xlabel('X'); ylabel('Y');
+    grid on
+    axis square
+    title('CMPE 677, Hwk 1, Problem 11','fontsize',12);
+    print -dpng cmpe677_hwk1_11.png
+    y = -4:2:4;
+    trace = interp1(x2, x1, y);
+    plot(trace, y);
