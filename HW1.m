@@ -146,9 +146,12 @@
     grid on
     text(0, 1.9, 'mean G(x)');
     text(3, 2.9, 'mean G(y)')
+    % calculate the area under each curve
+    Ax = trapz(x1, Gx) * .1
+    Ay = trapz(x1, Gy) * .1
+    
 %--------------------------------------------------------------------------
 % Question 11
-
     hold off
     mu=[0 0];
     sigma=[5 -2 ;-2 2];
@@ -162,6 +165,21 @@
     axis square
     title('CMPE 677, Hwk 1, Problem 11','fontsize',12);
     print -dpng cmpe677_hwk1_11.png
+    
+    % plotting traces
+    hold off
     y = -4:2:4;
-    trace = interp1(x2, x1, y);
-    plot(trace, y);
+    for i = 1:length(y)
+        cond = interp2(X1, X2, F, x1, y(i)*ones(size(x1)));
+        plot(x1, cond);
+        hold on
+    end
+    legend(cellstr(num2str(y')));
+    title('CMPE 677, Hwk 1, Problem 11-traces','fontsize',12);
+    print -dpng cmpe677_hwk1_11-traces.png
+    
+
+
+
+
+
