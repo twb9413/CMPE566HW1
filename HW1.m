@@ -19,7 +19,7 @@
     Ba = A(: ,2:3);
     Bb = A(:,2);
     Bc = A(2:3,:);
-    Bd = A(:,:);
+    Bd = A(:,:);;
 % only option A->(Ba) creates the wanted matrix, going through each part of
 % that expression. (:-> this colon makes it so all rows are selected, then
 % (,2:3) makes it so only columns 2 and 3 are selected.
@@ -83,6 +83,7 @@
 % The desired matrix is achieved with expressions A, C, and E
 %--------------------------------------------------------------------------
 % Question 7
+    hold off
     x = 0:.05:(3/2)*pi;
     y1 = sin(x);
     plot(x, y1, 'r', 'LineWidth', 3);
@@ -145,7 +146,7 @@
     print('-dpng', 'MarginalPlots.png');
     grid on
     text(0, 1.9, 'mean G(x)');
-    text(3, 2.9, 'mean G(y)')
+    text(3, 2.9, 'mean G(y)');
     % calculate the area under each curve
     Ax = trapz(x1, Gx) * .1
     Ay = trapz(x1, Gy) * .1
